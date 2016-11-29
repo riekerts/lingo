@@ -1,3 +1,5 @@
+package nl.riekerts;
+
 public class LingoWord {
 	private String randomWord;
 	private String[] words = {"plaat", "talen", "vloer", "kopje"};
