@@ -6,6 +6,8 @@ public class LingoGame {
 		LingoWord lingoWord = new LingoWord();
 		lingoWord.createNewWord();
 
-		lingoWord.checkWord("vloer");
+		String[] result = lingoWord.checkWord("vloer");
+
+		System.out.println(result[0] + ", " + result[1] + " " + result[2] + ", " + result[3] + ", " + result[4]);
 	}
 }

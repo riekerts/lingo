@@ -10,12 +10,13 @@ public class LingoWord {
 	}
 
 	public String[] checkWord(String word) {
-		char[] lettersInput = word.toCharArray();
-		char[] lettersCurrentWord = randomWord.toCharArray();
+		String[] lettersInput = word.split("");
+		//String[] lettersInput = {"v", "l", "o", "e", "r"};
+		String[] lettersCurrentWord = randomWord.split("");
 		String[] resultByLetter = new String[5];
-		System.out.println(lettersInput);
+		//System.out.println(lettersInput);
 		for(int i = 0;i < 5; i++){
-			if(lettersInput[i] == lettersCurrentWord[i]){
+			if(lettersInput[i].equals(lettersCurrentWord[i])) {
 				resultByLetter[i] = "correct";
 			}
 			else if(randomWord.contains(lettersInput[i])) {
