@@ -1,5 +1,10 @@
 package nl.riekerts;
 
+/*
+public enum Letter {
+    CORRECT, NOTHERE, INCORRECT 
+} */
+
 public class LingoWord {
 	private String randomWord;
 	private String[] words = {"plaat", "talen", "vloer", "kopje"};
