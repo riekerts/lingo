@@ -41,13 +41,14 @@ public class LingoGame {
 		mainFrame.setUndecorated(true);
 		wordInput = new JTextField(5);
 		wordInput.addActionListener(new InputListener());
+		wordInput.addKeyListener(new EscapeListener());
 
 		mainFrame.getContentPane().add(BorderLayout.SOUTH, wordInput);
 
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice device = env.getDefaultScreenDevice();	
    		device.setFullScreenWindow(mainFrame);
-		mainFrame.setBackground(new Color(0,0,150));
+		mainFrame.getContentPane().setBackground(new Color(0,0,150));
 		mainFrame.setVisible(true);
 	}
 
@@ -57,11 +58,21 @@ public class LingoGame {
 			result = lingoWord.checkWord(word);
 			printResult();
 			if (true) {
-				mainFrame.setBackground(new Color(0,150,0));
+				mainFrame.getContentPane().setBackground(new Color(0,150,0));
 			} else {
-				mainFrame.setBackground(new Color(150,0,0));
+				mainFrame.getContentPane().setBackground(new Color(150,0,0));
 			}
 			wordInput.setText("");
 		}
+	}
+
+	class EscapeListener implements KeyListener {
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+				System.exit(0);
+			}
+		}
+		public void keyReleased(KeyEvent e) { }
+		public void keyTyped(KeyEvent e) { }
 	}
 }
