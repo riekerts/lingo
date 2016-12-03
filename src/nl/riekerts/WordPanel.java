@@ -32,12 +32,16 @@ public class WordPanel extends JPanel {
 		int width = this.getWidth();
 		int height = this.getHeight();
 
+		Color inProgress = new Color(0,0,150);
+		Color finished = new Color(0,150,0);
 		Color correctPosition = new Color(200,69,0);
 		Color correctLetter = new Color(200,200,0);
 		Color userLetter = new Color(0,0,200);
 		Color fontColor = new Color(240,240,240);
 		Font theFont = new Font("Monospaced", Font.BOLD, (width/20));
 		g2d.setFont(theFont);
+		g2d.setColor(inProgress);
+		g2d.fillRect(0,0,width,height);
 
 		if (!input) {
 			g2d.setColor(correctPosition);
