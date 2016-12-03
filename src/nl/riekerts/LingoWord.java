@@ -14,6 +14,11 @@ public class LingoWord {
 		System.out.println("Random word: " + randomWord);
 	}
 
+	public String[] getLetters() {
+		String[] lettersCurrentWord = randomWord.split("");
+		return lettersCurrentWord;
+	}
+
 	public String[] checkWord(String word) {
 		String[] lettersInput = word.split("");
 		//String[] lettersInput = {"v", "l", "o", "e", "r"};

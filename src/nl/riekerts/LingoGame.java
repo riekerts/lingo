@@ -6,10 +6,12 @@ import java.awt.event.*;
 
 public class LingoGame {
 
+	public LingoGame game;
 	private String[] result;
 	private LingoWord lingoWord;
 	private JFrame mainFrame;
 	private JTextField wordInput;
+	private WordPanel wordPanel;
 
 	public static void main(String[] args) {
 		LingoGame game = new LingoGame();
@@ -18,8 +20,9 @@ public class LingoGame {
 
 	public void go(){
 		lingoWord = new LingoWord();
-		setupGui();
 		lingoWord.createNewWord();
+		setupGui();
+		wordPanel.setTheWord(lingoWord.getLetters());
 	}
 
 	public void printResult() {
@@ -39,16 +42,18 @@ public class LingoGame {
 		mainFrame = new JFrame("Riekerts Lingo");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setUndecorated(true);
+		wordPanel = new WordPanel();
 		wordInput = new JTextField(5);
 		wordInput.addActionListener(new InputListener());
 		wordInput.addKeyListener(new EscapeListener());
 
+		mainFrame.getContentPane().add(BorderLayout.CENTER, wordPanel);
 		mainFrame.getContentPane().add(BorderLayout.SOUTH, wordInput);
 
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice device = env.getDefaultScreenDevice();	
    		device.setFullScreenWindow(mainFrame);
-		mainFrame.getContentPane().setBackground(new Color(0,0,150));
+		mainFrame.getContentPane().setBackground(new Color(0,0,100));
 		mainFrame.setVisible(true);
 	}
 
@@ -56,12 +61,11 @@ public class LingoGame {
 		public void actionPerformed(ActionEvent e) {
 			String word = wordInput.getText();
 			result = lingoWord.checkWord(word);
+			wordPanel.setInput(true);
+			wordPanel.setUserInput(word);
+			wordPanel.setResults(result);
+			wordPanel.repaint();
 			printResult();
-			if (true) {
-				mainFrame.getContentPane().setBackground(new Color(0,150,0));
-			} else {
-				mainFrame.getContentPane().setBackground(new Color(150,0,0));
-			}
 			wordInput.setText("");
 		}
 	}
